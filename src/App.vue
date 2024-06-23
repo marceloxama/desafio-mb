@@ -1,47 +1,39 @@
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
-</script>
-
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
-  </header>
-
-  <main>
-    <TheWelcome />
-  </main>
+  <div>
+    <div>Etapa <span class="step-form--stage">Passo atual</span> de 4</div>
+    <component :is="steps[currentStep].step" 
+               :form="form" 
+               :nextStep="nextStep" 
+               :prevStep="prevStep" 
+               :submitForm="submitForm" />
+  </div>
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
-}
+<script setup>
+  import { ref } from 'vue';
+  import StepFormEmail from './components/StepFormEmail.vue';
+  import StepFormEntity from './components/StepFormEntity.vue';
+  import StepFormPass from './components/StepFormPass.vue';
+  import StepFormReview from './components/StepFormReview.vue';
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
+  const currentStep = ref(0);
 
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
+  const steps = [
+    { step: StepFormEmail },
+    { step: StepFormEntity },
+    { step: StepFormPass },
+    { step: StepFormReview }
+  ];
 
-  .logo {
-    margin: 0 2rem 0 0;
-  }
+  const nextStep = () => {
+    if (currentStep.value < steps.length - 1) {
+      currentStep.value++;
+    }
+  };
 
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-}
-</style>
+  const prevStep = () => {
+    if (currentStep.value > 0) {
+      currentStep.value--;
+    }
+  };
+</script>
