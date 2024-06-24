@@ -11,18 +11,20 @@
           <BaseInput 
             v-model="form.cpf" 
             :component-data="cpfComponent"
+            v-mask="'###.###.###-##'"
             required
            />
           <BaseInput 
             v-model="form.dob"
             :component-data="birthDateComponent"
-            :max="today"
             onkeydown="return false"
+            :max="maxDate"
             required
            />
           <BaseInput 
             v-model="form.personalPhone" 
-            :component-data="personalPhoneComponent" 
+            :component-data="personalPhoneComponent"
+            v-mask="['(##) ####-####', '(##) #####-####']" 
             required
            />
         </div>
@@ -34,22 +36,28 @@
            />
           <BaseInput 
             v-model="form.cnpj" 
-            :component-data="cnpjComponent" 
+            :component-data="cnpjComponent"
+            v-mask="'##.###.###/####-##'" 
             required 
           />
           <BaseInput 
             v-model="form.openingDate" 
             :component-data="openDateComponent" 
+            :max="maxDate"
             required 
           />
           <BaseInput 
             v-model="form.companyPhone" 
             :component-data="companyPhoneComponent" 
+            v-mask="['(##) ####-####', '(##) #####-####']"
             required
            />
         </div>
-        <button type="button" @click="prevStep">Voltar</button>
-        <button type="submit">Continuar</button>
+        <div class="button-container">
+          <button class="btn btn-outline-primary" type="button" @click="prevStep">Voltar</button>
+          <button class="btn btn-primary" type="submit">Continuar</button>
+        </div>
+        
       </form>
     </div>
   </template>
@@ -57,6 +65,7 @@
   <script setup>
     import { ref } from 'vue';
     import BaseInput from './inputs/BaseInput.vue';
+    import {mask} from 'vue-the-mask'
   
     const props = defineProps(['form', 'prevStep', 'nextStep']);
     
@@ -88,19 +97,19 @@
       placeholder: '___.___.___-__',
       label: 'CPF',
       errorMessage: 'CPF inválido',
-      pattern: '',
-      minLength: 2,
-      maxLength: 70
+      pattern: '[0-9]{3}\.?[0-9]{3}\.?[0-9]{3}\-?[0-9]{2}',
+      minLength: 14,
+      maxLength: 16
     });
 
     const cnpjComponent = ref({
       id:'cnpj',
       type: 'text',
-      placeholder: '___.___.___/____-__',
+      placeholder: '__.___.___/____-__',
       label: 'CNPJ',
       errorMessage: 'CNPJ inválido',
-      pattern: '',
-      minLength: 19,
+      pattern: '([0-9]{2}[\.]?[0-9]{3}[\.]?[0-9]{3}[\/]?[0-9]{4}[-]?[0-9]{2})|([0-9]{3}[\.]?[0-9]{3}[\.]?[0-9]{3}[-]?[0-9]{2})',
+      minLength: 17,
       maxLength: 19
     });
 
@@ -130,11 +139,11 @@
       id: 'personalPhone',
       type: 'text',
       placeholder: '(xx)xxxxx-xxxx',
-      label: 'Celular',
-      errorMessage: 'Campo obrigatório',
+      label: 'Telefone',
+      errorMessage: 'Número de tefone inválido',
       pattern: '',
       minLength: 13,
-      maxLength: 14
+      maxLength: 15
     });
 
     const companyPhoneComponent = ref({
@@ -142,11 +151,21 @@
       type: 'text',
       placeholder: '(xx)xxxxx-xxxx',
       label: 'Telefone',
-      errorMessage: 'Campo obrigatório',
+      errorMessage: 'Número de tefone inválido',
       pattern: '',
       minLength: 13,
-      maxLength: 14
+      maxLength: 15
     });
   </script>
+  <script>
+export default {
+  data() {
+    return {
+      maxDate: "2024-06-25" // Set your maximum date
+    };
+  },
+  directives: {mask}
+}
+</script>
   
   

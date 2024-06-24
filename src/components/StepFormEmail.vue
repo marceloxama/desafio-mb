@@ -21,8 +21,9 @@
                 </label>
             </div>
         </div>
-        
-        <button type="submit">Continuar</button>
+        <div class="button-container">
+          <button class="btn btn-primary" type="submit">Continuar</button>
+        </div>        
       </form>
     </div>
   </template>

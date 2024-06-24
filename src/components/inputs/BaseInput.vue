@@ -1,25 +1,27 @@
 <template>
-    <label :for=props.componentData.id class="field-label">{{ props.componentData.label }}</label>
-    <input
-      :id="props.componentData.id"
-      class="field-input"
-      :value="modelValue"
-      v-bind="$attrs"
-      :type="props.componentData.type"
-      :placeholder="props.componentData.placeholder"
-      @input="onInput"
-      @blur="fieldValidade"
-    />
-    <div
-      class="error-message"
-      v-if="requiredError"
-    >
-      {{ requiredError  }}
+    <div>
+      <label :for=props.componentData.id class="field-input__label">{{ props.componentData.label }}</label>
+      <input
+        :id="props.componentData.id"
+        class="field-input"
+        :value="modelValue"
+        v-bind="$attrs"
+        :type="props.componentData.type"
+        :placeholder="props.componentData.placeholder"
+        @input="onInput"
+        @blur="fieldValidade"
+      />
+      <div
+        class="field-input__error"
+        v-if="requiredError"
+      >
+        {{ requiredError  }}
+      </div>
     </div>
 </template>
 
 <script setup>
-  import { defineProps, defineEmits, ref } from 'vue'
+  import { ref } from 'vue'
 
   const props = defineProps({
     modelValue: {
@@ -62,31 +64,3 @@
   const requiredError = ref('')
 
 </script>
-
-<style scoped>
-  .field-label {
-    display: inline-block;
-    margin-bottom: 5px;
-    font-weight: 600;
-  }
-  .field-input {
-    appearance: none;
-    background-clip: padding-box;
-    background-color: var(--color-white);
-    border-radius: 0.375rem;
-    border: 1px solid var(--color-grey);
-    color: var(--color-black);
-    display: block;
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 1.5;
-    margin-bottom: 16px;
-    padding: .375rem .75rem;
-    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
-    width: 100%;
-  }
-  .error-message {
-    color: var(--color-red);
-    margin: -16px 0 10px;
-  }
-</style>

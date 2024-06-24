@@ -18,7 +18,7 @@
 
   const form = ref({
     email: '',
-    entitytype: '',
+    entityType: '',
     name: '',
     cpf: '',
     dob: '',
@@ -53,7 +53,7 @@
 
   const submitForm = async () => {
     try {
-      const response = await fetch('http://localhost:3000/registration', {
+      const response = await fetch('http://localhost:3000/form', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
