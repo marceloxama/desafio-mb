@@ -1,6 +1,6 @@
 <template>
     <div>
-      <h2>Passo 1</h2>
+      <h1 class="page-title">Seja bem vindo(a)</h1>
       <form @submit.prevent="nextStep">
         <BaseInput
           v-model="form.email"

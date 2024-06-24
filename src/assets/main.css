@@ -10,6 +10,10 @@
 .step-form--stage {
   color: var(--color-orange);
 }
+.page-title {
+  font-weight: 600;
+  margin-bottom: 16px;
+}
 
 /* form */
 .field-input {

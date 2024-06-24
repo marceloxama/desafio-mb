@@ -1,6 +1,7 @@
 <template>
     <div>
-      <h2>Passo 2</h2>
+      <h1 v-if="form.entityType === 'individual'" class="page-title">Pessoa física</h1>
+      <h1 v-if="form.entityType === 'company'" class="page-title">Pessoa jurídica</h1>
       <form @submit.prevent="nextStep">
         <div v-if="form.entityType === 'individual'">
           <BaseInput 

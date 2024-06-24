@@ -1,6 +1,6 @@
 <template>
     <div>
-      <h2>Passo 4</h2>
+      <h1 class="page-title">Revise suas informações</h1>
       <form @submit.prevent="submitForm">
         <div>
           <div class="field-container">

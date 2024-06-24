@@ -1,6 +1,6 @@
 <template>
     <div>
-      <h2>Passo 3</h2>
+      <h1 class="page-title">Senha de acesso</h1>
       <form @submit.prevent="nextStep">
         <BaseInput 
             v-model="form.password"
@@ -25,10 +25,30 @@
       type: 'password',
       placeholder: 'Insira sua senha',
       label: 'Senha',
-      errorMessage: 'Campo obrigatório',
+      errorMessage: 'Mínimo de 8 caracteres',
       pattern: '',
-      minLength: 8,
-      maxLength: 10
+      minLength: 6,
+      maxLength: 30
     });
+  </script>
+  <script>
+    export default {
+      data() {
+        return {
+          showPassword: false,
+          password: null
+        };
+      },
+      computed: {
+        buttonLabel() {
+          return (this.showPassword) ? "Hide" : "Show";
+        }
+      },
+      methods: {
+        toggleShow() {
+          this.showPassword = !this.showPassword;
+        }
+      }
+    };
   </script>
   
