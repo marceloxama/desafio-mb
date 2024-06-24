@@ -4,6 +4,7 @@
   --color-grey: rgba(60, 60, 60, 0.29);
   --color-orange: #ef4723;
   --color-white: #ffffff;
+  --color-red: #dd222e;
 
   /* layout colors */
   --color-background: var(--color-white);
@@ -15,6 +16,9 @@
   --color-btn-primary-label: var(--color-white);
   --color-btn-secondary: var(--color-white);
   --color-btn-secondary-border: var(--color-orange);
+
+  /* validate colors */
+  --color-error: var();
 }
 
 *,

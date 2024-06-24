@@ -13,7 +13,7 @@
           <p>Razão Social: {{ form.company }}</p>
           <p>CNPJ: {{ form.cnpj }}</p>
           <p>Data de Abertura: {{ form.openingDate }}</p>
-          <p>Telefone: {{ form.professionalPhone }}</p>
+          <p>Telefone: {{ form.companyPhone }}</p>
         </div>
         <p>Senha: {{ form.password }}</p>
       </div>
