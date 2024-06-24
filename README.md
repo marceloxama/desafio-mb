@@ -27,7 +27,7 @@ Passo 5
 Ainda no local onde o projeto foi clonado abra a pasta "server". Em seguida, abra nesta pasta um outro prompt (terminal) de sua escolha. Instale as dependências do servidor, executando a seguinte linha de comando:
 npm install
 
-Passo 3
+Passo 6
 Ainda com o prompt (terminal) aberto, inicie o projeto o servidor executando a linha de comando a seguir
 node app.js
 
